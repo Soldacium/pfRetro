@@ -1,0 +1,41 @@
+$button-width: 180px;
+
+.options{
+    position: fixed;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 1000;
+
+    button{
+        padding: 10px;
+        position: relative;
+        margin: 10px;
+        font-size: 26px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        left: -$button-width + 20px;
+        width: $button-width;
+        border-radius: 5px;
+        color: var(--colorBackground);
+        background-color: var(--colorText);
+        transition: 0.1s;
+        cursor: pointer;
+        // border: 3px solid white;
+
+        @for $i from 1 through 4 {
+            &:nth-of-type(#{$i}) {
+               // background-color: var(--colorAccent + #{$i}) 
+            }
+        }
+
+        &.active{
+            left: -20px;
+        }
+
+        &:hover{
+            left: -20px;
+        }
+    }
+}

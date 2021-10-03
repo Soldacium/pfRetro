@@ -1,0 +1,121 @@
+$border-size: 4px;
+
+main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorSecondary);
+
+    >*{
+        position: relative;
+    }
+
+    .arrow{
+        padding: 0.5rem;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5%;
+        transition: 0.2s ease;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+
+        &.left{
+            left: 0;
+        }
+
+        &.right{
+            right: 0;
+        }
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.082);
+        }
+
+        img{
+            height: 1.5rem;
+        }
+    }
+
+    .apps{
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+
+        .app{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 50%;
+            width: calc(200px + 13vw);
+            font-size: 1.3rem;
+            color: white;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            transition: 0.3s ease;
+            background-color: rgb(31, 31, 31);
+            border: $border-size solid var(--colorPrimary);
+            cursor: pointer;
+            transform-origin: left;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.103);
+
+            &.active{
+                transform: scale(1.2) translate(-50%, -50%) !important;
+                // box-shadow: 0 0 10px;
+
+                .cover{
+                   opacity: 0 !important; 
+                }
+            }
+
+            &.inactive{
+                border-color: transparent !important;
+            }
+
+            @for $i from 1 through 4 {
+                &.type-#{$i - 1} {
+                    border-color: var(--colorAccent#{$i});
+                    color: var(--colorAccent#{$i});
+                }
+            }
+
+            span{
+                color: white;
+            }
+
+            .cover{
+                position: absolute;
+                width: calc(100% + #{$border-size * 2});
+                height: calc(100% + #{$border-size * 2});
+                top: - $border-size;
+                left: - $border-size;
+                pointer-events: none;
+                background-color: var(--colorSecondary);
+                z-index: 100;
+                transition: 0.2s ease;
+            }
+
+            .image{
+
+                width: 80%;
+                position: relative;
+                margin: 30px 10px;
+                border: $border-size solid var(--colorPrimary);
+            }
+
+            .title{
+                font-size: 40px;
+            }
+        }
+    }
+}

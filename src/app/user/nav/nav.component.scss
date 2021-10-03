@@ -1,0 +1,143 @@
+.nav{
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.menu-button{
+    position: fixed;
+    right: 30px;
+    top: 30px;
+    height: 40px;
+    width: 40px;
+    border: 7px solid var(--colorBackground);
+    z-index: 100000;
+    cursor: pointer;
+
+    .menu-button-check{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-color: var(--colorText);
+    }
+}
+
+.menu-overlay{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    z-index: 1000;
+    
+
+    &.inactive{
+        //display: flex;
+        pointer-events: none;
+    }
+
+    .menu{
+        list-style: none;
+        height: 40%;
+        width: 360px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        z-index: 100;
+        background-color: var(--colorBackground);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        border: 10px solid white;
+        transition: 0.5s;
+        transition-delay: 0.3s;
+        opacity: 0;
+        
+        &.active{
+            opacity: 100%;
+        }
+
+        &.inactive{
+            opacity: 0;
+        }
+    
+        li {
+            margin: 20px 0px;
+            position: relative;
+            
+            @for $i from 1 through 4 {
+                &:nth-of-type(#{$i}) {
+                    button{
+                        &.active{
+                            background-color: var(--colorAccent + #{$i}) 
+                        }
+                    }
+                }
+            }
+            
+            button {
+                background-color: transparent;
+                border: none;
+                font-size: 30px;
+                width: 100%;
+                text-align: left;
+                padding: 10px;
+                color: var(--colorText);
+                cursor: pointer;
+                &.active{
+                    background-color: var(--colorText);
+                    color: var(--colorBackground);  
+                }
+
+                &:focus{
+                    background-color: transparent;
+                    font-size: 1000px;
+                }
+            }
+        }   
+    }
+
+    .menu-overlay-background{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: absolute;
+        
+        .square{
+            width: 120px;
+            height: 120px;
+            background-color: var(--colorBackground);
+            transition: 0.4s ease;
+            flex-grow: 1;
+
+            &.active{
+
+            }
+
+            &.inactive{
+                background-color: transparent !important;
+            }
+            @for $i from 1 through 4 {
+                &.color-#{$i} {
+                    background-color: var(--colorAccent + #{$i});
+                }
+            }
+
+            @for $i from 1 through 16 {
+                &:nth-of-type(#{$i}n) {
+                    transition-delay: random(100)/200 + 0.01s;
+                }
+            }
+        }
+    }
+
+}

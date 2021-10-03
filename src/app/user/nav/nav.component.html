@@ -1,0 +1,26 @@
+<!--
+<nav class="nav">
+    <a [routerLink]='[""]' routerLinkActive="active">🌐</a>
+    <a [routerLink]='["posts"]' routerLinkActive="active">Posts</a>
+    <a [routerLink]='["portfolio"]' routerLinkActive="active">Portfolio</a>
+    <a [routerLink]='["doodles"]' routerLinkActive="active">Doodles</a>
+</nav>    
+-->
+<div class="menu-button" (click)="showMenu = !showMenu">
+    <div class="menu-button-check">
+
+    </div>
+</div>
+<div class="menu-overlay" [ngClass]="showMenu ? 'active' : 'inactive'">
+    <ul class="menu" [ngClass]="showMenu ? 'active' : 'inactive'">
+        <li *ngFor="let option of options; index as i" >
+            <button 
+            class="option" 
+            [ngClass]="selectedOption === i ? 'active':'inactive'"
+            (mouseover)="hoverOption(i)">{{option}}</button>
+        </li>            
+    </ul>
+    <div class="menu-overlay-background">
+        <div class="square color-{{i}}" [ngClass]="{'inactive': !showMenu}" *ngFor="let i of squares"></div>
+    </div>
+</div>

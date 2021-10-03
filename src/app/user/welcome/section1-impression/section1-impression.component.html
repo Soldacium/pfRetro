@@ -1,0 +1,29 @@
+<div class="container">
+    <ul class="menu">
+        <li *ngFor="let option of options; index as i" >
+            <a
+            class="option" 
+            [ngClass]="selectedOption === i ? 'active':'inactive'"
+            (mouseover)="hoverOption(i)"
+            [routerLink]="['work']">{{option}}</a>
+        </li>
+        <div class="menu-background">
+            <span 
+            *ngFor="let option of options; index as i" 
+            [ngStyle]="{'background-color': 'var(--colorAccent' + (selectedOption + 1) + ')'}"
+            >
+                <div *ngIf="i === 3">Secret?</div>
+            </span>
+        </div>
+    </ul>
+
+</div>
+<div class="name">
+    <span>Wojciech</span>
+    <span>Wawrzyniec</span>
+    <span>Wilhelm</span>
+</div>
+
+<canvas id="canvas"></canvas>    
+
+
