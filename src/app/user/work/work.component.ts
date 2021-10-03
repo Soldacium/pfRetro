@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationService } from './animation.service';
 
 @Component({
   selector: 'app-work',
@@ -9,10 +10,19 @@ export class WorkComponent implements OnInit {
 
   options = ['Carousel', 'List'];
   selectedOption = 0;
+  canvas!: HTMLCanvasElement;
 
-  constructor() { }
+  constructor(private animationEngine: AnimationService) { }
 
   ngOnInit(): void {
+    this.setupCanvas();
+  }
+
+  setupCanvas(): void{
+    this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    console.log(this.canvas);
+    this.animationEngine.init(this.canvas);
+    this.animationEngine.render();
   }
 
   selectOption(option: number): void {
