@@ -56,18 +56,18 @@ main{
             display: flex;
             align-items: center;
             flex-direction: column;
-            height: 50%;
+            height: calc(300px + 20vh);
             width: calc(200px + 13vw);
             font-size: 1.3rem;
             color: white;
             top: 50%;
             transform: translate(-50%,-50%);
             transition: 0.3s ease;
-            background-color: rgb(31, 31, 31);
+            background-color: rgb(70, 70, 70);
             border: $border-size solid var(--colorPrimary);
             cursor: pointer;
             transform-origin: left;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.103);
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
 
             &.active{
                 transform: scale(1.2) translate(-50%, -50%) !important;
@@ -106,7 +106,7 @@ main{
             }
 
             .image{
-
+                box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
                 width: 80%;
                 position: relative;
                 margin: 30px 10px;

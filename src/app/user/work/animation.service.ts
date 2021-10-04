@@ -21,8 +21,10 @@ export class AnimationService {
 
   private squareSize = 10; // in px
   private squareFrequency = 1; // 60 = 1s
+  private squareGraying = 10; // increase chance for non-color square
+  private squareGrayColor = 'rgb(60,60,60)'; // color of "non color" sqares
   private maxDistance = 120;
-  private squareSpeed = 2; // px / frame
+  private squareSpeed = 1.5; // px / frame
   private squareColors = ['black', 'black', 'black', 'black'];
   private squares: Square[] = [];
 
@@ -59,13 +61,17 @@ export class AnimationService {
       .trim();
       this.squareColors[i] = colorString;
     }
+
+    for(let i = 0; i < this.squareGraying; i++){
+      this.squareColors.push(this.squareGrayColor);
+    }
   }
 
   private addSquare(): void{
     const randY = Math.floor(Math.random() * this.cHeight);
     const randDirection = Math.random() < 0.5 ? 1 : -1;
     const X = randDirection === 1 ? 0 : this.cWidth;
-    const randColor = this.squareColors[Math.floor(Math.random() * this.squareColors.length)];
+    const randColor = this.squareColors[Math.floor(Math.random() * (this.squareColors.length + this.squareGraying))];
     this.squares.push(new Square(X, randY, randDirection, this.ctx, randColor, this.squareSize, this.squareSpeed));
   }
 
@@ -121,5 +127,6 @@ export class Square {
     this.ctx.fillRect(this.x, this.y, this.size, this.size);
     this.x += this.direction * this.speed;
     this.distance += this.speed;
+    this.size -= this.speed / 15;
   }
 }

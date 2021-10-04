@@ -7,13 +7,13 @@
         *ngFor='let app of apps; index as i' 
         [style.z-index]="100 - getAbsolute(i - currentApp) * 2"
         [style.left]="(i - currentApp) * 10 + 50 + '%'"
-        [style.top]="getAbsolute(i - currentApp) * 2 + 50 +'%'"
+        [style.top]="getAbsolute(i - currentApp) * (-5) + 50 +'%'"
         [ngStyle]="{'transform':'scale('+ (1 - getAbsolute(i - currentApp) /4 ) + ') translate(-50%,-50%) ' }"
         [class]="'type-'+getTypeNumber(app.type)"
         [ngClass]="(i - currentApp) === 0 ? 'active' : 'inactive'"
         (click)='focusOn(i)'>
             <span class="cover"
-            [style.opacity]="(getAbsolute(i - currentApp) * 5 + 70) + '%'"></span>
+            [style.opacity]="(getAbsolute(i - currentApp) * 6 + 50) + '%'"></span>
             <img [src]="app.image" alt="" class="image">
             <span class="title">{{app.name}}</span>
         </div>        
