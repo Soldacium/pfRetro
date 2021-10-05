@@ -1,12 +1,10 @@
 <main>
-    <button class="arrow left" (click)="prevApp()">
-        
-    </button>
+    <button class="arrow left" (click)="prevApp()"></button>
     <div class="apps">
         <div class="app" 
         *ngFor='let app of apps; index as i' 
         [style.z-index]="100 - getAbsolute(i - currentApp) * 2"
-        [style.left]="(i - currentApp) * 15 + 50 + '%'"
+        [style.left]="(i - currentApp) * 20 + 50 + '%'"
         [style.top]=" 50 +'%'"
         [class]="'type-'+getTypeNumber(app.type)"
         [ngClass]="(i - currentApp) === 0 ? 'active' : 'inactive'"
@@ -28,15 +26,5 @@
             </div>
         </div>        
     </div>
-<!-- 
-    getAbsolute(i - currentApp) * (-5) +
-        [ngStyle]="{'transform':'scale('+ (1 - getAbsolute(i - currentApp) /3 ) + ') translate(-50%,-50%) ' }"
-    + getAbsolute(i - currentApp) * 17
-    [style.opacity]="-getAbsolute(i - currentApp) * 27 + 100 + '%'"
-    [style]='{left: (i - currentApp)*15 + 50 + "%", opacity: -getAbsolute(i)*27 + 100 + "%", height: 200 + "px"}' 
-    [ngStyle]="{'left': (i - currentApp)*15 + 50 + '%'; 'opacity': -getAbsolute(i)*27 + 100 + '%';}" 
--->
-    <button class="arrow right" (click)="nextApp()">
-       
-    </button>
+    <button class="arrow right" (click)="nextApp()"></button>
 </main>

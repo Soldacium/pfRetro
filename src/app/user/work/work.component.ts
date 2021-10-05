@@ -9,7 +9,7 @@ import { AnimationService } from './animation.service';
 export class WorkComponent implements OnInit {
 
   options = ['Carousel', 'List'];
-  selectedOption = 0;
+  selectedOption = 1;
   canvas!: HTMLCanvasElement;
 
   constructor(private animationEngine: AnimationService) { }

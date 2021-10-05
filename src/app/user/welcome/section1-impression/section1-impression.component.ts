@@ -4,7 +4,8 @@ import { AnimationService } from './animation.service';
 @Component({
   selector: 'app-section1-impression',
   templateUrl: './section1-impression.component.html',
-  styleUrls: ['./section1-impression.component.scss']
+  styleUrls: ['./section1-impression.component.scss'],
+  providers: [AnimationService]
 })
 export class Section1ImpressionComponent implements OnInit {
 

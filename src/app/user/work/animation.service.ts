@@ -86,7 +86,7 @@ export class AnimationService {
   }
 
   private clearRect(): void{
-    this.ctx.fillStyle = 'rgb(40, 40, 40)'; // this.bgColor;
+    this.ctx.fillStyle = this.bgColor; // this.bgColor;
     this.ctx.globalAlpha = this.clearSpeed;
     this.ctx.fillRect(0, 0, this.cWidth, this.cHeight);
     this.ctx.globalAlpha = 1;

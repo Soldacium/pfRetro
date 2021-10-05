@@ -1,1 +1,21 @@
-<p>list works!</p>
+<div class="apps">
+    <div class="app" 
+    *ngFor='let app of apps; index as i' 
+    [class]="'type-' + getTypeNumber(app.type)"
+    [ngClass]="(i - currentApp) === 0 ? 'active' : 'inactive'">
+        <span class="cover"></span>
+        <img [src]="app.image" alt="" class="image">
+        <span class="title">{{app.name}}</span>
+        <div class="description">
+            <span>{{app.description}}</span>
+            <div class="buttons">
+                <button>
+                    <img src="assets/icons/code.svg" alt="">
+                </button>
+                <button>
+                    <img src="assets/icons/link.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </div>        
+</div>

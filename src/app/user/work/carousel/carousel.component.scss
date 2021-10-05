@@ -6,7 +6,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--colorSecondary);
 
     >*{
         position: relative;
@@ -56,28 +55,30 @@ main{
             display: flex;
             align-items: center;
             flex-direction: column;
-            height: calc(200px + 20vh);
-            width: calc(200px + 13vw);
+            height: calc(200px + 10vh);
+            width: calc(160px + 10vw);
             font-size: 1.3rem;
             color: white;
             top: 50%;
             transform: translate(-50%,-50%);
             transition: 0.6s;
             background-color: rgb(70, 70, 70);
-
+            // background: linear-gradient(rgb(70, 70, 70), rgb(70, 70, 70));
+            box-shadow: 0 0 0 0 transparent;
 
             &.active{
                 height: 100%;
                 width: calc(500px + 13vw);
-                border: 5px solid white;
+                border: 5px solid;
+                box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.212);
 
                 .cover{
                    opacity: 0 !important; 
                 }
 
-                $font-title-color: white;
-                $font-border-size: 5px;
-                .title{
+                .title{                
+                    $font-title-color: white;
+                    $font-border-size: 5px;
                     text-shadow: 
                     -$font-border-size 0 $font-title-color,
                     0 $font-border-size $font-title-color, 
@@ -93,8 +94,10 @@ main{
             }
 
             &.inactive{
-                border-color: transparent !important;
+                // border-color: transparent !important;
                 cursor: pointer;
+                background-color: var(--colorBackground);
+                border: 4px solid rgb(70, 70, 70);
 
                 .title{
                     opacity: 0;
@@ -103,10 +106,10 @@ main{
 
             @for $i from 1 through 4 {
                 &.type-#{$i - 1} {
-                    border-color: var(--colorAccent#{$i});
-
                     &.active{
-                        background-color: var(--colorAccent#{$i});
+                        background: linear-gradient(var(--colorAccent#{$i}), black);
+                        // background-color: var(--colorAccent#{$i});
+                        border-color: var(--colorAccent#{$i});
                     }
 
                     .description{
@@ -125,12 +128,18 @@ main{
 
             .cover{
                 position: absolute;
+                /*
                 width: calc(100% + #{$border-size * 2});
                 height: calc(100% + #{$border-size * 2});
                 top: - $border-size;
                 left: - $border-size;
+                */
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
                 pointer-events: none;
-                background-color: var(--colorSecondary);
+                background-color: var(--colorBackground);
                 z-index: 100;
                 transition: 0.2s ease;
             }
