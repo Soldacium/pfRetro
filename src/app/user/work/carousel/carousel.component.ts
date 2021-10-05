@@ -37,6 +37,9 @@ export class CarouselComponent implements OnInit {
   }
 
   getAbsolute(num: number): number{
+    if (Math.abs(num) < 0){
+      return 0;
+    }
     return Math.abs(num);
   }
 

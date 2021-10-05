@@ -21,7 +21,7 @@ export class AnimationService {
 
   private squareSize = 10; // in px
   private squareFrequency = 1; // 60 = 1s
-  private squareGraying = 10; // increase chance for non-color square
+  private squareGraying = 100; // increase chance for non-color square
   private squareGrayColor = 'rgb(60,60,60)'; // color of "non color" sqares
   private maxDistance = 120;
   private squareSpeed = 1.5; // px / frame
@@ -53,7 +53,6 @@ export class AnimationService {
       .getPropertyValue(`--colorBackground`)
       .toLocaleLowerCase()
       .trim();
-    console.log(this.bgColor);
     for (let i = 0; i < this.squareColors.length; i++){
       const colorString = getComputedStyle(document.documentElement)
       .getPropertyValue(`--colorAccent${i + 1}`)
@@ -62,7 +61,7 @@ export class AnimationService {
       this.squareColors[i] = colorString;
     }
 
-    for(let i = 0; i < this.squareGraying; i++){
+    for (let i = 0; i < this.squareGraying; i++){
       this.squareColors.push(this.squareGrayColor);
     }
   }

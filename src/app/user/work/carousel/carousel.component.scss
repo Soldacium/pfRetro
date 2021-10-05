@@ -56,40 +56,70 @@ main{
             display: flex;
             align-items: center;
             flex-direction: column;
-            height: calc(300px + 20vh);
+            height: calc(200px + 20vh);
             width: calc(200px + 13vw);
             font-size: 1.3rem;
             color: white;
             top: 50%;
             transform: translate(-50%,-50%);
-            transition: 0.3s ease;
+            transition: 0.6s;
             background-color: rgb(70, 70, 70);
-            border: $border-size solid var(--colorPrimary);
-            cursor: pointer;
-            transform-origin: left;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
+
 
             &.active{
-                transform: scale(1.2) translate(-50%, -50%) !important;
-                // box-shadow: 0 0 10px;
+                height: 100%;
+                width: calc(500px + 13vw);
+                border: 5px solid white;
 
                 .cover{
                    opacity: 0 !important; 
+                }
+
+                $font-title-color: white;
+                $font-border-size: 5px;
+                .title{
+                    text-shadow: 
+                    -$font-border-size 0 $font-title-color,
+                    0 $font-border-size $font-title-color, 
+                    $font-border-size 0 $font-title-color, 
+                    0 0px -$font-border-size $font-title-color;
+                    font-size: 80px;
+                    color: black;
+                }
+
+                .description{
+                    height: 45%;
                 }
             }
 
             &.inactive{
                 border-color: transparent !important;
+                cursor: pointer;
+
+                .title{
+                    opacity: 0;
+                }
             }
 
             @for $i from 1 through 4 {
                 &.type-#{$i - 1} {
                     border-color: var(--colorAccent#{$i});
-                    color: var(--colorAccent#{$i});
+
+                    &.active{
+                        background-color: var(--colorAccent#{$i});
+                    }
+
+                    .description{
+                        button{
+                            &:hover{
+                                background-color: var(--colorAccent#{$i});
+                            }
+                        }
+                    }
                 }
             }
 
-            span{
+            .title{
                 color: white;
             }
 
@@ -106,15 +136,63 @@ main{
             }
 
             .image{
-                box-shadow: 0 0 6px rgba(0, 0, 0, 0.199);
+                box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.356);
                 width: 80%;
                 position: relative;
                 margin: 30px 10px;
-                border: $border-size solid var(--colorPrimary);
+                border: 30px solid var(--colorPrimary);
             }
 
             .title{
                 font-size: 40px;
+            }
+
+            .description{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 0;
+                width: 100%;
+                overflow: auto;
+                background-color: rgb(68, 68, 68);
+                transition: 0.6s;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+
+
+                span{
+                    padding: 30px;
+                    font-size: 24px;
+                    display: block;
+                }
+
+                .buttons{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    button{
+                        border: none;
+                        background-color: white;
+                        padding: 10px 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 200px;
+                        margin: 30px 10px;
+                        font-size: 24px;
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                        }
+
+                    }
+                }
             }
         }
     }
