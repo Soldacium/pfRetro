@@ -14,10 +14,10 @@ main{
     position: relative;
 
     .app{
-        height: calc(250px + 13vh);
+        height: calc(200px + 13vh);
         // width: calc(400px + 10vw);
         position: absolute;
-        transition: 0.3s ease all;
+        transition: 0.3s ease all, 0.1s transform;
 
         .cover{
             width: 100%;
@@ -27,15 +27,19 @@ main{
             left: 0;
             background-color: var(--colorBackground);
             pointer-events: none;
+            z-index: 1;
         }
 
         .image{
             height: 100%;
+            position: relative;
         }
 
         &.inactive{
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.082);
-
+            // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.082);
+            border: 3px solid rgb(0, 0, 0);
+            filter: grayscale(100%);
+            transform: none !important;
             &:hover{
                 cursor: pointer;
             }
@@ -44,14 +48,15 @@ main{
         &.active{
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.24);
             filter: none !important;
-            transform: perspective(1000px) translateX(0) translateY(0) translateZ(300px);
+            height: calc(250px + 13vh);
+            // transform: perspective(1000px) translateX(0) translateY(0) translateZ(300px);
             .cover{
                 opacity: 0 !important;
             }
         }
 
         @for $i from 1 through 4 {
-            &.type-#{$i - 1} {
+            &.type-#{$i} {
                 &.active{
                     // background: linear-gradient(var(--colorAccent#{$i}), black);
                     // background-color: var(--colorAccent#{$i});
@@ -72,32 +77,127 @@ main{
     position: relative;
 
     .app-about{
-        width: 600px;
-        height: 900px;
-        border: 6px solid rgb(70, 70, 70);
+        $shadow: 0 0 6px rgba(0, 0, 0, 0.432);
+        $background: rgb(56, 56, 56);
+        $background-light: rgb(43, 43, 43); 
+        width: 500px;
+        height: 700px;
+        // border: 6px solid rgb(70, 70, 70);
         position: relative;
-        padding: 10px;
+        padding: 30px 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.2s;
+        // box-shadow: $shadow;
+        // background: $background;
+        color: rgb(255, 255, 255);
+        // background: linear-gradient(rgb(54, 54, 54), var(--colorBackgroundSecondary));
+
+        &::before{
+            $padding: -30px;
+            $border-width: 0px;
+            content: '';
+            position: absolute;
+            width: calc(100%  - (#{$padding} * 2));
+            height: calc(100%  - (#{$padding} * 2));
+            left: calc(#{$padding} - #{$border-width} / 2);
+            top: calc(#{$padding} - #{$border-width} / 2);
+            border: $border-width solid white;
+            // box-shadow: $shadow;
+            // background-color: $background-light;
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        > *{
+            margin: 20px;
+            position: relative;
+        }
+
+        @for $i from 1 through 4 {
+            &.app-type-#{$i} {
+                // background: linear-gradient(var(--colorAccent#{$i}), black);
+                // background-color: var(--colorAccent#{$i});
+                // border-right: 14px solid var(--colorAccent#{$i}); 
+                border-color: var(--colorAccent#{$i});
+                .title{
+                    &::first-letter{
+                        color: var(--colorAccent#{$i});
+                    }
+                }
+            }
+        }
 
         .title{
             position: absolute;
             top: 0;
             left: 50%;
             padding: 10px;
-            background-color: var(--colorBackground);
+            margin: 0;
+            // background-color: var(--colorBackground);
             transform: translate(-50%, -50%);
-            font-size: 60px;
+            font-size: 80px;
+            color: white;
+            $font-border-size: 4px;
+            $font-border-color: black;
+            text-shadow: 
+            -$font-border-size 0 $font-border-color, 
+            0 $font-border-size $font-border-color, 
+            $font-border-size 0 $font-border-color, 
+            0 0px -$font-border-size $font-border-color;
+
+            &::first-letter{
+                transition: 0.2s ease;
+            }
         }
     
         .tags{
-    
+            display: flex;
+
+            .tag{
+                padding: 5px 10px;
+                background-color: var(--colorBackgroundSecondary);
+                color: white;
+                box-shadow: 0 0 5px black inset;
+                font-size: 20px;
+            }
         }
     
         .description{
-    
+            font-size: 20px;
         }
     
-        .links{
-    
+        .buttons{
+            position: absolute;
+            display: flex;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-around;
+
+            button{
+                border: none;
+                background: $background;
+                border: 8px solid $background-light;
+                padding: 10px 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+                margin: 30px 10px;
+                font-size: 24px;
+                transition: 0.1s ease;
+
+                &:hover{
+                    background: white;
+                }
+
+                img{
+                    height: 40px;
+                }
+            }
         }
     }
 }

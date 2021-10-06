@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AppType } from '@shared/models/app-type.model';
 import { App } from '@shared/models/app.model';
+import { AnimationService } from '../animation.service';
 import { Apps } from '../apps';
 
 @Component({
@@ -8,11 +9,17 @@ import { Apps } from '../apps';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent implements OnInit, AfterViewInit {
 
-  currentApp = 0;
+  currentAppId = 0;
   apps: App[] = Apps;
+  currentApp = this.apps[0];
   appTypesList: AppType[] = ['Project', 'Python', 'Web'];
+  mouse = {
+    x: 0,
+    y: 0
+  };
+  color = '';
 
   @Input()
   appNumberSize = 0;
@@ -20,21 +27,42 @@ export class CarouselComponent implements OnInit {
   @Input()
   totalSize = 0;
 
+  constructor(private animationEngine: AnimationService){
+  }
+
   ngOnInit(): void {
-    // this.setappNumbers();
+    this.setupMouse();
+    this.setupKeys();
+  }
+
+  ngAfterViewInit(): void {
+    this.setupApps();
   }
 
   nextApp(): void {
-    this.currentApp < this.apps.length ? this.currentApp += 1 : console.log('no');
+    this.currentAppId < this.apps.length ? this.currentAppId += 1 : console.log('no');
+    this.setCurrentAppToCurrent();
   }
 
   prevApp(): void {
-    this.currentApp > 0 ? this.currentApp -= 1 : console.log('no');
+    this.currentAppId > 0 ? this.currentAppId -= 1 : console.log('no');
+    this.setCurrentAppToCurrent();
   }
 
   focusOn(appNumber: number): void{
-    this.currentApp = appNumber;
-    console.log(this.currentApp);
+    this.currentAppId = appNumber;
+    this.setCurrentAppToCurrent();
+  }
+
+  setCurrentAppToCurrent(): void{
+    this.currentApp = this.apps[this.currentAppId];
+    const accentNum = this.getTypeNumber(this.currentApp.type);
+    console.log(accentNum);
+    this.color = getComputedStyle(document.documentElement)
+    .getPropertyValue(`--colorAccent${accentNum}`)
+    .toLocaleLowerCase()
+    .trim();
+    this.animationEngine.pulse(this.color);
   }
 
   getAbsolute(num: number): number{
@@ -45,7 +73,7 @@ export class CarouselComponent implements OnInit {
   }
 
   goToappNumber(appNumber: number): void {
-    this.currentApp = appNumber;
+    this.currentAppId = appNumber;
   }
 
   getTypeNumber(type: string): number{
@@ -55,7 +83,55 @@ export class CarouselComponent implements OnInit {
         typeNum = i;
       }
     });
-    return typeNum;
+    return typeNum + 1;
+  }
+
+  setupMouse(): void{
+    window.addEventListener('mousemove', (e) => {
+      this.mouse = {
+        x: e.x,
+        y: e.y
+      };
+    });
+  }
+
+  setupApps(): void{
+    this.apps.forEach((app, i) => {
+      const appElement = document.getElementById(`app-${i}`) as HTMLDivElement;
+      console.log(appElement.offsetWidth);
+      const hoverScale = 1;
+      appElement.addEventListener('mousemove', (e) => {
+          appElement.style.transform = `
+          perspective(1000px)
+          translateZ(${hoverScale * 300}px)
+          rotateY(${((this.mouse.x - (appElement.getBoundingClientRect().left + appElement.offsetWidth * hoverScale / 2)) / appElement.offsetWidth * hoverScale / 2) * 20}deg)
+          rotateX(${((this.mouse.y - (appElement.getBoundingClientRect().top + appElement.offsetHeight * hoverScale / 2)) / appElement.offsetHeight * hoverScale / 2) * (-20)}deg)`;
+      }); //
+    });
+  }
+
+  setupKeys(): void {
+    window.addEventListener('keydown', e => {
+      console.log(e);
+      switch (e.key) {
+        case 'ArrowDown':
+          this.nextApp();
+          break;
+        case 'ArrowUp':
+          this.prevApp();
+          break;
+        case 's':
+          this.nextApp();
+          break;
+        case 'w':
+          this.prevApp();
+          break;
+        case 'Enter':
+          break;
+        default:
+          break;
+      }
+    });
   }
 
 

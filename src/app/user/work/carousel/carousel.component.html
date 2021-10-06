@@ -2,23 +2,42 @@
     <div class="apps-carousel">
         <div class="app" 
         *ngFor='let app of apps; index as i' 
-        [style.z-index]="100 - getAbsolute(i - currentApp) * 2"
+        [style.z-index]="100 - getAbsolute(i - currentAppId) * 2"
         [style.left]="25 + '%'"
-        [style.top]=" 30 + (i - currentApp) * 40 +'%'"
-        [style.filter]="'grayscale(' + (getAbsolute(i - currentApp) * 10 + 50) + '%) blur(2px)'"
-        [class]="'type-' + getTypeNumber(app.type) + ' app-' + i"
-        [ngClass]="(i - currentApp) === 0 ? 'active' : 'inactive'"
+        [style.top]=" 30 + (i - currentAppId) * 40 +'%'"
+        [class]="'type-' + getTypeNumber(app.type)"
+        [id]="'app-' + i"
+        [ngClass]="(i - currentAppId) === 0 ? 'active' : 'inactive'"
         (click)='focusOn(i)'>
-        <!-- [style.transform]="'perspective(1000px) translateX(0) translateY(0) translateZ(' + (10 - getAbsolute(i - currentApp) * 300) + 'px)'" -->
+        <!-- 
+            [style.filter]="'grayscale(' + (getAbsolute(i - currentAppId) * 10 + 70) + '%) blur(2px)'"
+            [style.transform]="'perspective(1000px) translateX(0) translateY(0) translateZ(' + (10 - getAbsolute(i - currentAppId) * 300) + 'px)'" 
+        -->
             <span class="cover"
-            [style.opacity]="(getAbsolute(i - currentApp) * 10 + 50) + '%'"></span>
+            [style.opacity]="(getAbsolute(i - currentAppId) * 10 + 50) + '%'"></span>
             <img [src]="app.image" alt="" class="image">
         </div>        
     </div>
     <div class="app-about-wrap">
-        <div class="app-about">
+        <div class="app-about app-type-{{getTypeNumber(currentApp.type)}}">
             <div class="title">
-                {{apps[currentApp].name}}
+                {{currentApp.name}}
+            </div>
+            <div class="tags">
+                <div class="tag" *ngFor="let tag of currentApp.tags">
+                    {{tag}}
+                </div>
+            </div>
+            <div class="description">
+                {{currentApp.description}} 
+            </div>
+            <div class="buttons">
+                <button>
+                    <img src="assets/icons/code.svg" alt="">
+                </button>
+                <button>
+                    <img src="assets/icons/link.svg" alt="">
+                </button>
             </div>
         </div>
     </div>

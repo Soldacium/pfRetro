@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AppType } from '@shared/models/app-type.model';
 import { App } from '@shared/models/app.model';
+import { AnimationService } from '../animation.service';
 import { Apps } from '../apps';
 
 @Component({

@@ -15,14 +15,14 @@ export class WorkComponent implements OnInit {
   constructor(private animationEngine: AnimationService) { }
 
   ngOnInit(): void {
-    // this.setupCanvas();
+    this.setupCanvas();
   }
 
   setupCanvas(): void{
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    console.log(this.canvas);
     this.animationEngine.init(this.canvas);
     this.animationEngine.render();
+    this.animationEngine.pulse('#aaaaaa');
   }
 
   selectOption(option: number): void {

@@ -99,7 +99,6 @@
 
                 &:focus{
                     background-color: transparent;
-                    font-size: 1000px;
                 }
             }
         }   
@@ -118,13 +117,14 @@
             background-color: var(--colorBackground);
             transition: 0.4s ease;
             flex-grow: 1;
+            border: 3px solid black;
 
             &.active{
 
             }
 
             &.inactive{
-                background-color: transparent !important;
+                opacity: 0 !important;
             }
             @for $i from 1 through 4 {
                 &.color-#{$i} {
