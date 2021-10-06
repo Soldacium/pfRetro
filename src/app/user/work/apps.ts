@@ -15,7 +15,7 @@ export const Apps: App[] = [
         tags: ['New'],
         description: 'lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsum',
         link: '',
-        image: imageLocation + 'zoo.png',
+        image: imageLocation + 'blog.png',
         type: 'Web'
     },
     {
@@ -23,7 +23,7 @@ export const Apps: App[] = [
         tags: ['New'],
         description: 'lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsum',
         link: '',
-        image: imageLocation + 'zoo.png',
+        image: imageLocation + 'chatV1.png',
         type: 'Project'
     },
     {

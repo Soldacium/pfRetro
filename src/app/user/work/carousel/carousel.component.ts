@@ -34,6 +34,7 @@ export class CarouselComponent implements OnInit {
 
   focusOn(appNumber: number): void{
     this.currentApp = appNumber;
+    console.log(this.currentApp);
   }
 
   getAbsolute(num: number): number{

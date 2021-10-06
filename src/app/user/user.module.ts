@@ -13,6 +13,7 @@ import { Section4ContactComponent } from './welcome/section4-contact/section4-co
 import { WorkComponent } from './work/work.component';
 import { CarouselComponent } from './work/carousel/carousel.component';
 import { ListComponent } from './work/list/list.component';
+import { SlidesComponent } from './work/slides/slides.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,8 @@ const routes: Routes = [
     Section4ContactComponent,
     WorkComponent,
     CarouselComponent,
-    ListComponent],
+    ListComponent,
+    SlidesComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
