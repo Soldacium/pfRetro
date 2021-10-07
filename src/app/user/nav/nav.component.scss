@@ -115,7 +115,7 @@
             width: 120px;
             height: 120px;
             background-color: var(--colorBackground);
-            transition: 0.4s ease;
+            transition: 0.2s ease;
             flex-grow: 1;
             border: 3px solid black;
 
@@ -134,7 +134,7 @@
 
             @for $i from 1 through 16 {
                 &:nth-of-type(#{$i}n) {
-                    transition-delay: random(100)/200 + 0.01s;
+                    transition-delay: random(100)/100 + 0.01s;
                 }
             }
         }

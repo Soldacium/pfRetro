@@ -14,6 +14,7 @@ import { WorkComponent } from './work/work.component';
 import { CarouselComponent } from './work/carousel/carousel.component';
 import { ListComponent } from './work/list/list.component';
 import { SlidesComponent } from './work/slides/slides.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
         component: WelcomeComponent
       },
       {
-        path: 'posts',
+        path: 'blog',
         component: PostsComponent
       },
       {
@@ -51,7 +52,8 @@ const routes: Routes = [
     WorkComponent,
     CarouselComponent,
     ListComponent,
-    SlidesComponent],
+    SlidesComponent,
+    AboutComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)

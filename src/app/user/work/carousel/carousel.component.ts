@@ -20,6 +20,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     y: 0
   };
   color = '';
+  virtualScroll = 0;
 
   @Input()
   appNumberSize = 0;
@@ -93,6 +94,17 @@ export class CarouselComponent implements OnInit, AfterViewInit {
         y: e.y
       };
     });
+
+    const scrollNeeded = 200;
+    window.addEventListener('wheel', (e) => {
+      if (this.virtualScroll + e.deltaY >= 0 && this.virtualScroll + e.deltaY < this.apps.length * scrollNeeded - 100){
+        this.virtualScroll += e.deltaY;
+        if (this.virtualScroll % scrollNeeded === 0){
+          this.focusOn(Math.floor(this.virtualScroll / scrollNeeded));
+        }
+      }
+      console.log(this.virtualScroll);
+    });
   }
 
   setupApps(): void{
@@ -103,7 +115,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       appElement.addEventListener('mousemove', (e) => {
           appElement.style.transform = `
           perspective(1000px)
-          translateZ(${hoverScale * 300}px)
+          translateZ(${hoverScale * 400}px)
           rotateY(${((this.mouse.x - (appElement.getBoundingClientRect().left + appElement.offsetWidth * hoverScale / 2)) / appElement.offsetWidth * hoverScale / 2) * 20}deg)
           rotateX(${((this.mouse.y - (appElement.getBoundingClientRect().top + appElement.offsetHeight * hoverScale / 2)) / appElement.offsetHeight * hoverScale / 2) * (-20)}deg)`;
       }); //
@@ -112,7 +124,6 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
   setupKeys(): void {
     window.addEventListener('keydown', e => {
-      console.log(e);
       switch (e.key) {
         case 'ArrowDown':
           this.nextApp();
@@ -133,6 +144,5 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 
 }
