@@ -10,16 +10,16 @@ export class AnimationService {
   private cWidth = 800;
   private cHeight = 600;
 
-  private bgColor = 'rgb(40,40,40)';
+  private bgColor = 'rgb(255,255,255)';
   private clearSpeed = 0.1; // from 0 to 1
-  private animationSpeed = 10; // in ms, time between two columns being colored
+  private animationSpeed = 30; // in ms, time between two columns being colored
 
   private squareSize = 10; // in px
   // increase chance for non-color square,
   // example: squareGraying 10 means gray squares will be 10 times as common, but setting it to <=1 will make every square colored
   private squareGraying = 10;
   private squares: Square[] = [];
-  private squaresPerRow = 55;
+  private squaresPerRow = 15;
   private squaresPerColumn = 0; // calculated at runtime
 
   init(canvas: HTMLCanvasElement): void {
@@ -32,9 +32,15 @@ export class AnimationService {
     this.setupEventListeners();
     this.blackRect();
     this.calculateOptimalSquareSize();
+
+    this.bgColor = getComputedStyle(document.documentElement)
+    .getPropertyValue(`--colorBackgroundSecondary`)
+    .toLocaleLowerCase()
+    .trim();
   }
 
   pulse(color: string): void {
+    // this.blackRect();
     this.changeSquareColors(color);
     this.sendPulseX(0);
   }
@@ -117,6 +123,8 @@ export class Square {
   }
 
   draw(): void{
+    // this.ctx.fillStyle = 'rgb(32,32,32)';
+    // this.ctx.fillRect(this.x - 3, this.y - 3, this.size + 6, this.size + 6);
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(this.x, this.y, this.size, this.size);
   }

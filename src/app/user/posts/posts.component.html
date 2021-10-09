@@ -1,1 +1,67 @@
-<p>posts works!</p>
+<div class="posts-popular">
+    <div class="posts-popular-wrap">
+        <span class="section-name">
+            Popular
+        </span>
+        <div class="post-big post">
+            <div class="title">
+                How to make CSS good
+            </div>
+            <img src="assets/posts-icons/css.svg" alt="">
+            <div class="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi obcaecati vitae dignissimos fugit vero dolorum minus?
+            </div>
+        </div>
+        <div class="posts-small">
+            <div class="post-small post">
+                <div class="title">
+                    Intro to Canvas
+                </div>
+            </div>
+            <div class="post-small post">
+                <div class="title">
+                    Intro to TS
+                </div>
+                <img src="assets/posts-icons/angular.svg" alt="">
+                <div class="description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi obcaecati vitae dignissimos fugit vero dolorum minus?
+                </div>
+            </div>
+        </div>
+        <div class="post-big post">
+            <div class="title">
+                Maps in Angular
+            </div>
+            <img src="assets/posts-icons/maps.svg" alt="">
+            <div class="description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi obcaecati vitae dignissimos fugit vero dolorum minus?
+            </div>
+        </div>
+    </div>
+</div>
+<div class="posts-latest">
+    <span class="section-name">
+        Newest
+    </span>
+    <div class="search">
+        <div class="input-box">
+            <input type="text">
+            <img src="assets/icons/search.svg" alt="">
+        </div>
+        <div class="tags">
+            <span class="tag" *ngFor="let tag of tags">
+                {{tag}}
+            </span>
+        </div>
+    </div>
+    <div class="posts">
+        <div class="post" *ngFor="let post of posts">
+            <img src="assets/app-images/pathfinding.png" alt="" class="image-background">
+            <div class="title">Post title</div>
+            <div class="description">Post quick description, what to expect</div>
+            <button class="read">
+                Read
+            </button>
+        </div>
+    </div>
+</div>

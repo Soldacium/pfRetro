@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 body{
@@ -10,7 +12,9 @@ body{
     overflow-x: hidden;
 
     // font-family: 'Roboto', sans-serif;
-    font-family: 'Share Tech Mono', monospace;
+    // font-family: 'Share Tech Mono', monospace;
+    // font-family: 'Gemunu Libre', sans-serif;
+    font-family: 'Chakra Petch', sans-serif;
     background-color: var(--colorBackground);
     color: var(--colorText);
 
@@ -43,7 +47,7 @@ html{
     --bigText: calc(1.2rem + 0.1vw);
     --biggestText: calc(1.5rem + 0.1vw);
 
-    --colorBackground: rgb(36, 36, 36);
+    --colorBackground: rgb(56, 56, 56);
     --colorBackgroundSecondary: rgb(70, 70, 70);
     --colorPrimary: #f7f7f7;
     --colorSecondary: #2e2e2e;

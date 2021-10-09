@@ -10,7 +10,7 @@ export class NavComponent implements OnInit {
 
   showMenu = false;
   colorSpread =  40;
-  squares = Array(140).fill(0);
+  squares = Array(150).fill(0);
   selectedOption = 1;
   options = ['Work', 'Contact', 'Blog', 'Doodles'];
 

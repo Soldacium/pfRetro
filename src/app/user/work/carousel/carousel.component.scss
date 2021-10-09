@@ -84,11 +84,13 @@ main{
         $shadow: 0 0 6px rgba(0, 0, 0, 0.432);
         $background: rgb(56, 56, 56);
         $background-light: rgb(43, 43, 43); 
-        width: 500px;
-        height: 700px;
+        width: 80%;
+        height: 100%;
+        right: 0;
+        top: 0;
         // border: 6px solid rgb(70, 70, 70);
-        position: relative;
-        padding: 30px 20px;
+        position: absolute;
+        padding: 60px 30px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -109,7 +111,7 @@ main{
             top: calc(#{$padding} - #{$border-width} / 2);
             border: $border-width solid white;
             // box-shadow: $shadow;
-            background-color: $background-light;
+            // background-color: $background-light;
             z-index: -1;
             border-radius: 10px;
         }
@@ -135,21 +137,25 @@ main{
 
         .title{
             position: absolute;
-            top: 0;
-            left: 50%;
+            top: 50%;
+            left: 0;
             padding: 10px;
             margin: 0;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
             // background-color: var(--colorBackground);
             transform: translate(-50%, -50%);
             font-size: 80px;
             color: white;
             $font-border-size: 4px;
             $font-border-color: black;
+            /*
             text-shadow: 
             -$font-border-size 0 $font-border-color, 
             0 $font-border-size $font-border-color, 
             $font-border-size 0 $font-border-color, 
             0 0px -$font-border-size $font-border-color;
+            */
 
             &::first-letter{
                 transition: 0.2s ease;
