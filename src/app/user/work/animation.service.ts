@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AnimationService {
+export class AnimationService implements OnDestroy {
 
+  private frameId = 0;
   private canvas!: HTMLCanvasElement;
   private ctx!: CanvasRenderingContext2D;
   private cWidth = 800;
@@ -12,15 +13,19 @@ export class AnimationService {
 
   private bgColor = 'rgb(255,255,255)';
   private clearSpeed = 0.1; // from 0 to 1
-  private animationSpeed = 30; // in ms, time between two columns being colored
+  private animationSpeed = 6; // in ms, time between two columns being colored
 
   private squareSize = 10; // in px
   // increase chance for non-color square,
   // example: squareGraying 10 means gray squares will be 10 times as common, but setting it to <=1 will make every square colored
   private squareGraying = 10;
   private squares: Square[] = [];
-  private squaresPerRow = 15;
+  private squaresPerRow = 120;
   private squaresPerColumn = 0; // calculated at runtime
+
+  ngOnDestroy(): void{
+    cancelAnimationFrame(this.frameId);
+  }
 
   init(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
@@ -40,7 +45,6 @@ export class AnimationService {
   }
 
   pulse(color: string): void {
-    // this.blackRect();
     this.changeSquareColors(color);
     this.sendPulseX(0);
   }
@@ -101,7 +105,7 @@ export class AnimationService {
   }
 
   render(): void{
-    requestAnimationFrame(() => {
+    this.frameId = requestAnimationFrame(() => {
       this.render();
     });
     this.clearRect();

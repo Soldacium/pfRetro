@@ -35,7 +35,7 @@ main{
         }
 
         &.inactive{
-            border: 3px solid rgb(0, 0, 0);
+            border: var(--borderWidthSmall) solid var(--colorBackground);
             filter: grayscale(100%);
             transform: none !important;
             &:hover{
@@ -83,20 +83,6 @@ main{
         color: rgb(255, 255, 255);
         border-left: 6px solid;
 
-        &::before{
-            $padding: -30px;
-            $border-width: 0px;
-            content: '';
-            position: absolute;
-            width: calc(100%  - (#{$padding} * 2));
-            height: calc(100%  - (#{$padding} * 2));
-            left: calc(#{$padding} - #{$border-width} / 2);
-            top: calc(#{$padding} - #{$border-width} / 2);
-            border: $border-width solid white;
-            z-index: -1;
-            border-radius: 10px;
-        }
-
         > *{
             margin: 20px;
             position: relative;
@@ -105,13 +91,7 @@ main{
         @for $i from 1 through 4 {
             &.app-type-#{$i} {
                 border-color: var(--colorAccent#{$i});
-                /*
-                .title{
-                    &::first-letter{
-                        color: var(--colorAccent#{$i});
-                    }
-                }
-                */
+
                 .buttons{
                     button{
                         border-color: var(--colorAccent#{$i});
@@ -127,8 +107,8 @@ main{
         }
 
         .title{
-            font-size: 70px;
-            
+            font-size: 90px;
+            font-weight: 500;
         }
     
         .tags{
@@ -160,7 +140,7 @@ main{
             button{
                 border: none;
                 background: $background;
-                border: 3px solid $background-light;
+                border: var(--borderWidthSmall) solid $background-light;
                 padding: 10px 30px;
                 display: flex;
                 justify-content: center;

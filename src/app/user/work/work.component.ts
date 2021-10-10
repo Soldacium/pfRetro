@@ -4,7 +4,8 @@ import { AnimationService } from './animation.service';
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
-  styleUrls: ['./work.component.scss']
+  styleUrls: ['./work.component.scss'],
+  providers: [AnimationService]
 })
 export class WorkComponent implements OnInit {
 

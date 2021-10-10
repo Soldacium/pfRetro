@@ -17,23 +17,11 @@
         background-color: black;
         transition: 0.1s;
         cursor: pointer;
-        // border: 3px solid white;
-
-        @for $i from 1 through 4 {
-            &:nth-of-type(#{$i}) {
-               // background-color: var(--colorAccent + #{$i}) 
-            }
-        }
 
         img{
             width: 40px;
             height: 40px;
-            // background-image: url('../../../assets/icons/link.svg');
             filter: invert(100%);
-        }
-
-        .option-img-1{
-            
         }
 
         &:hover{

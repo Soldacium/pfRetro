@@ -39,7 +39,6 @@
     
 
     &.inactive{
-        //display: flex;
         pointer-events: none;
     }
 
@@ -69,11 +68,11 @@
             opacity: 0;
         }
     
-        li {
+        li{
             margin: 20px 0px;
             position: relative;
             
-            @for $i from 1 through 4 {
+            @for $i from 1 through 4{
                 &:nth-of-type(#{$i}) {
                     a{
                         &.active{
@@ -83,7 +82,7 @@
                 }
             }
             
-            a {
+            a{
                 background-color: transparent;
                 border: none;
                 font-size: 30px;
@@ -119,15 +118,12 @@
             background-color: var(--colorBackgroundSecondary);
             transition: 0.1s ease;
             flex-grow: 1;
-            border: 3px solid var(--colorBackground);
-
-            &.active{
-
-            }
+            border: var(--borderWidthSmall) solid var(--colorBackground);
 
             &.inactive{
                 opacity: 0 !important;
             }
+
             @for $i from 1 through 4 {
                 &.color-#{$i} {
                     background-color: var(--colorAccent + #{$i});

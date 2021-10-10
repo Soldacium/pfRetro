@@ -96,14 +96,6 @@ export class AnimationService implements OnDestroy {
     dirLight3.position.set( 0, 125, 0 );
     this.scene.add( dirLight3 );
 
-    const geometries = [
-      new THREE.SphereGeometry( 1, 64, 64 ),
-      new THREE.BoxGeometry( 1, 1, 1 ),
-      new THREE.ConeGeometry( 1, 1, 32 ),
-      new THREE.TetrahedronGeometry( 1 ),
-      new THREE.TorusKnotGeometry( 1, .4 )
-    ];
-
     this.group = new THREE.Group();
     const geometry = new THREE.IcosahedronGeometry(100, 1); // new THREE.SphereGeometry(100, 7, 12, 3, 6.3, 0, 6.3);
     const color = new THREE.Color();
@@ -111,15 +103,6 @@ export class AnimationService implements OnDestroy {
     const material = new THREE.MeshLambertMaterial( { color } );
     const mesh = new THREE.Mesh(geometry, material);
 
-    /*
-    const geo = new WireframeGeometry2( mesh.geometry );
-    const mat = new LineMaterial( {
-      color: 0x000000,
-      linewidth: 155, // in pixels
-      dashed: false
-    } );
-    const wireframe = new THREE.LineSegments( geo, mat );
-    */
     const geo = new THREE.EdgesGeometry( mesh.geometry ); // or WireframeGeometry
     const mat = new THREE.LineBasicMaterial( { color: 0x000000 } );
     const wireframe = new THREE.LineSegments( geo, mat );
