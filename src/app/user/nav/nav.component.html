@@ -14,10 +14,12 @@
 <div class="menu-overlay" [ngClass]="showMenu ? 'active' : 'inactive'">
     <ul class="menu" [ngClass]="showMenu ? 'active' : 'inactive'">
         <li *ngFor="let option of options; index as i" >
-            <button 
+            <a
             class="option" 
+            [routerLink]="[option.toLowerCase()]"
             [ngClass]="selectedOption === i ? 'active':'inactive'"
-            (mouseover)="hoverOption(i)">{{option}}</button>
+            (mouseover)="hoverOption(i)"
+            (click)="showMenu = !showMenu">{{option}}</a>
         </li>            
     </ul>
     <div class="menu-overlay-background">

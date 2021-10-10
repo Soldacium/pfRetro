@@ -1,0 +1,46 @@
+#canvas{
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.post{
+    padding: 10% 25%;
+
+    .title{
+        font-weight: 600;
+        font-size: 80px;
+        margin: 10px 0;
+        color: white;
+    }
+
+    .tags{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        margin: 10px 0;
+
+        .tag{
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            margin-right: 10px;
+            margin-top: 10px;
+            border: 3px solid var(--colorBackgroundSecondary);
+            // box-shadow: 0 0 5px rgba(0, 0, 0, 0.178) inset;
+            border-radius: 10px;
+
+            &.active{
+                background-color: var(--colorAccent1);
+                color: var(--colorBackground)
+            }
+        }
+    }
+
+    .content{
+        margin: 50px 0;
+        font-size: 1.3em;
+    }
+}

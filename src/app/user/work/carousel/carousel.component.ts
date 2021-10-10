@@ -115,7 +115,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       appElement.addEventListener('mousemove', (e) => {
           appElement.style.transform = `
           perspective(1000px)
-          translateZ(${hoverScale * 300}px)
+          translateZ(${hoverScale * 400}px)
           rotateY(${((this.mouse.x - (appElement.getBoundingClientRect().left + appElement.offsetWidth * hoverScale / 2)) / appElement.offsetWidth * hoverScale / 2) * 20}deg)
           rotateX(${((this.mouse.y - (appElement.getBoundingClientRect().top + appElement.offsetHeight * hoverScale / 2)) / appElement.offsetHeight * hoverScale / 2) * (-20)}deg)`;
       }); //

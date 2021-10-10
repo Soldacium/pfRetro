@@ -15,7 +15,6 @@ main{
 
     .app{
         height: calc(200px + 13vh);
-        // width: calc(400px + 10vw);
         position: absolute;
         transition: 0.3s ease all, 0.1s transform;
 
@@ -35,12 +34,7 @@ main{
             position: relative;
         }
 
-        &:not(:hover){
-            // transform: none !important;
-        }
-
         &.inactive{
-            // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.082);
             border: 3px solid rgb(0, 0, 0);
             filter: grayscale(100%);
             transform: none !important;
@@ -56,16 +50,6 @@ main{
             // transform: perspective(1000px) translateX(0) translateY(0) translateZ(300px);
             .cover{
                 opacity: 0 !important;
-            }
-        }
-
-        @for $i from 1 through 4 {
-            &.type-#{$i} {
-                &.active{
-                    // background: linear-gradient(var(--colorAccent#{$i}), black);
-                    // background-color: var(--colorAccent#{$i});
-                    // border-right: 14px solid var(--colorAccent#{$i});
-                }
             }
         }
     }
@@ -88,9 +72,8 @@ main{
         height: 100%;
         right: 0;
         top: 0;
-        // border: 6px solid rgb(70, 70, 70);
         position: absolute;
-        padding: 60px 30px;
+        padding: 60px 20%;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -98,7 +81,7 @@ main{
         box-shadow: $shadow;
         background: $background-light;
         color: rgb(255, 255, 255);
-        // background: linear-gradient(rgb(54, 54, 54), var(--colorBackgroundSecondary));
+        border-left: 6px solid;
 
         &::before{
             $padding: -30px;
@@ -110,8 +93,6 @@ main{
             left: calc(#{$padding} - #{$border-width} / 2);
             top: calc(#{$padding} - #{$border-width} / 2);
             border: $border-width solid white;
-            // box-shadow: $shadow;
-            // background-color: $background-light;
             z-index: -1;
             border-radius: 10px;
         }
@@ -123,43 +104,31 @@ main{
 
         @for $i from 1 through 4 {
             &.app-type-#{$i} {
-                // background: linear-gradient(var(--colorAccent#{$i}), black);
-                // background-color: var(--colorAccent#{$i});
-                // border-right: 14px solid var(--colorAccent#{$i}); 
                 border-color: var(--colorAccent#{$i});
+                /*
                 .title{
                     &::first-letter{
                         color: var(--colorAccent#{$i});
+                    }
+                }
+                */
+                .buttons{
+                    button{
+                        border-color: var(--colorAccent#{$i});
+                        color: var(--colorAccent#{$i});
+                        &:hover{
+                            background-color: var(--colorAccent#{$i});
+                            color: var(--colorBackground);
+                            box-shadow: 0 0 6px rgba(0, 0, 0, 0.151);
+                        }
                     }
                 }
             }
         }
 
         .title{
-            position: absolute;
-            top: 50%;
-            left: 0;
-            padding: 10px;
-            margin: 0;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            // background-color: var(--colorBackground);
-            transform: translate(-50%, -50%);
-            font-size: 80px;
-            color: white;
-            $font-border-size: 4px;
-            $font-border-color: black;
-            /*
-            text-shadow: 
-            -$font-border-size 0 $font-border-color, 
-            0 $font-border-size $font-border-color, 
-            $font-border-size 0 $font-border-color, 
-            0 0px -$font-border-size $font-border-color;
-            */
-
-            &::first-letter{
-                transition: 0.2s ease;
-            }
+            font-size: 70px;
+            
         }
     
         .tags{
@@ -186,11 +155,12 @@ main{
             width: 100%;
             align-items: center;
             justify-content: space-around;
+            padding: 0 20%;
 
             button{
                 border: none;
                 background: $background;
-                border: 8px solid $background-light;
+                border: 3px solid $background-light;
                 padding: 10px 30px;
                 display: flex;
                 justify-content: center;
@@ -199,12 +169,14 @@ main{
                 margin: 30px 10px;
                 font-size: 24px;
                 transition: 0.1s ease;
+                border-radius: 22px;
 
                 &:hover{
-                    background: white;
+                    background: var(--colorBackground);
                 }
 
                 img{
+                    filter: invert(100%);
                     height: 40px;
                 }
             }

@@ -32,6 +32,10 @@ const routes: Routes = [
       {
         path: 'work',
         component: WorkComponent
+      },
+      {
+        path: 'post',
+        component: PostComponent
       }
     ]
   },

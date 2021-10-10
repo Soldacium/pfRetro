@@ -3,7 +3,7 @@
         <div class="app" 
         *ngFor='let app of apps; index as i' 
         [style.z-index]="100 - getAbsolute(i - currentAppId) * 2"
-        [style.left]="25 + '%'"
+        [style.left]="30 + '%'"
         [style.top]=" 30 + (i - currentAppId) * 40 +'%'"
         [class]="'type-' + getTypeNumber(app.type)"
         [id]="'app-' + i"
@@ -18,9 +18,9 @@
             <img [src]="app.image" alt="" class="image">
         </div>        
     </div>
-    <div class="app-about-wrap">
+    <div class="app-about-wrap readable">
         <div class="app-about app-type-{{getTypeNumber(currentApp.type)}}">
-            <div class="title">
+            <div class="title unreadable">
                 {{currentApp.name}}
             </div>
             <div class="tags">
@@ -33,10 +33,12 @@
             </div>
             <div class="buttons">
                 <button>
-                    <img src="assets/icons/code.svg" alt="">
+                    Code
+                    <!-- <img src="assets/icons/code.svg" alt=""> -->
                 </button>
                 <button>
-                    <img src="assets/icons/link.svg" alt="">
+                    Link
+                    <!-- <img src="assets/icons/link.svg" alt=""> -->
                 </button>
             </div>
         </div>

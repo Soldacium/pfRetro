@@ -63,6 +63,14 @@ input, textarea, button{
     font-family: 'Share Tech Mono', monospace;
 }
 
+.readable{
+    font-family: 'Roboto', sans-serif;
+}
+
+.unreadable{
+    font-family: 'Chakra Petch', sans-serif;
+}
+
 button:focus, input:focus, textarea:focus{
     outline: none;
 }

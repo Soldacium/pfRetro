@@ -75,7 +75,7 @@
             
             @for $i from 1 through 4 {
                 &:nth-of-type(#{$i}) {
-                    button{
+                    a{
                         &.active{
                             background-color: var(--colorAccent + #{$i}) 
                         }
@@ -83,7 +83,7 @@
                 }
             }
             
-            button {
+            a {
                 background-color: transparent;
                 border: none;
                 font-size: 30px;
@@ -92,6 +92,8 @@
                 padding: 10px;
                 color: var(--colorText);
                 cursor: pointer;
+                display: block;
+
                 &.active{
                     background-color: var(--colorText);
                     color: var(--colorBackground);  
@@ -115,7 +117,7 @@
             width: 120px;
             height: 120px;
             background-color: var(--colorBackgroundSecondary);
-            transition: 0.2s ease;
+            transition: 0.1s ease;
             flex-grow: 1;
             border: 3px solid var(--colorBackground);
 
@@ -134,7 +136,7 @@
 
             @for $i from 1 through 16 {
                 &:nth-of-type(#{$i}n) {
-                    transition-delay: random(100)/100 + 0.01s;
+                    transition-delay: random(100)/200 + 0.01s;
                 }
             }
         }
