@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "startServer": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +22,10 @@
     "@angular/router": "~11.0.1",
     "@types/delaunator": "^3.0.0",
     "@types/three": "^0.131.1",
+    "body-parser": "^1.19.0",
     "delaunator": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10",
     "rxjs": "~6.6.0",
     "three": "^0.132.2",
     "tslib": "^2.0.0",
@@ -41,6 +45,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "nodemon": "^2.0.13",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
